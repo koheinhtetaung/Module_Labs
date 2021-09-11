@@ -1,5 +1,5 @@
 module "project01_vpc" {
-  source = "../../modules/module-01"
+  source = "../module_01"
 
   name = "project01_vpc"
   cidr_block = "192.168.0.0/16"

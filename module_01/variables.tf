@@ -52,3 +52,9 @@ variable "azs" {
   type = list
   default = []
 }
+
+# variable "route_table_number" {
+#   type = string
+#   default = "1"
+#   description = "Private route table count"
+# }
