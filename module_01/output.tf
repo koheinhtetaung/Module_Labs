@@ -21,3 +21,11 @@ output "public_routetable_id"{
 output "private_routetable_id"{
   value = aws_route_table.private.id
 }
+
+output "security_id"{
+  value = aws_security_group.bastion.id
+}
+
+output "instance_id"{
+  value = aws_instance.bastion.id
+}

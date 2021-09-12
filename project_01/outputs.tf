@@ -21,3 +21,12 @@ output "pub_route_table_id" {
 output "private_route_table_id" {
   value = module.project01_vpc.private_routetable_id
 }
+
+output "sg_id"{
+  value= module.project01_vpc.security_id
+}
+
+output "instance_id"{
+  value= module.project01_vpc.instance_id
+}
+

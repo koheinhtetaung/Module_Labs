@@ -38,6 +38,8 @@ variable "private_subnet_cidr_block" {
   default = ["192.168.10.0/24", "192.168.20.0/24", "192.168.30.0/24"]
 }
 
+
+
 variable "private_subnet"{
   type = string
   default = "private_subnet"
@@ -53,8 +55,19 @@ variable "azs" {
   default = []
 }
 
-# variable "route_table_number" {
-#   type = string
-#   default = "1"
-#   description = "Private route table count"
-# }
+variable "bastion_ami"{
+  type = string
+  description = "AMI ID"
+}
+
+variable "bastion_instance_type" {
+  type = string
+  default = ""
+}
+
+variable "key_name" {
+  type = string
+  default = ""
+  description = "EC2 key pair for ssh login to instances"
+}
+

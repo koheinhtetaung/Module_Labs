@@ -103,14 +103,6 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
 }
 
-# resource "aws_route" "private" {
-#   count = length(var.private_subnet_cidr_block)
-
-#   route_table_id         = aws_route_table.private[count.index].id
-#   destination_cidr_block = "0.0.0.0/0"
-#   nat_gateway_id         = aws_nat_gateway.default[count.index].id
-# }
-
 resource "aws_route_table" "private" {
   # count = var.route_table_number
 
@@ -133,4 +125,84 @@ resource "aws_route_table_association" "private" {
 
   subnet_id      = aws_subnet.private[count.index].id
   route_table_id = aws_route_table.private.id
+}
+
+resource "aws_eip" "eip1" {
+  # count = length(var.public_subnet_cidr_blocks)
+
+  vpc = true
+
+   tags = merge(
+    {
+      Name        = "eip_01",
+      Project     = var.project,
+      Environment = var.environment
+    },
+    var.tags
+  )
+}
+
+resource "aws_nat_gateway" "natGW" {
+  # depends_on = [aws_internet_gateway.default]
+
+  # count = length(var.public_subnet_cidr_blocks)
+
+  allocation_id = aws_eip.eip1.id
+  subnet_id     = aws_subnet.public[0].id
+
+  tags = merge(
+    {
+      Name        = "gwNAT",
+      Project     = var.project,
+      Environment = var.environment
+    },
+    var.tags
+  )
+}
+
+resource "aws_route" "private" {
+  route_table_id         = aws_route_table.private.id
+  destination_cidr_block = "0.0.0.0/0"
+  nat_gateway_id         = aws_nat_gateway.natGW.id
+}
+
+resource "aws_security_group" "bastion" {
+  vpc_id = aws_vpc.vpc.id
+
+  tags = merge(
+    {
+      Name        = "sgBastion",
+      Project     = var.project,
+      Environment = var.environment
+    },
+    var.tags
+  )
+}
+
+resource "aws_instance" "bastion" {
+  ami                         = var.bastion_ami
+  availability_zone           = var.azs[0]
+  instance_type               = var.bastion_instance_type
+  key_name                    = var.key_name
+  monitoring                  = true
+  subnet_id                   = aws_subnet.public[0].id
+  associate_public_ip_address = true
+
+  tags = merge(
+    {
+      Name        = "Bastion",
+      Project     = var.project,
+      Environment = var.environment
+    },
+    var.tags
+  )
+}
+
+resource "aws_security_group_rule" "ssh_ingress" {
+  security_group_id = "sg-018417d583652a8cb"
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
 }
