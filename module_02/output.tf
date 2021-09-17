@@ -21,3 +21,15 @@ output "rt_id"{
 output "private_rt_id" {
   value = aws_route_table.private.*.id
 }
+
+output "eip_id"{
+  value = ["${aws_eip.nateip.*.id}"]
+}
+
+output "nat_gateway_id" {
+  value = aws_nat_gateway.natgw.*.id
+}
+
+output "nat_gateway_address" {
+  value = aws_nat_gateway.natgw.*.subnet_id
+}

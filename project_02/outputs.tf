@@ -22,3 +22,15 @@ output "route_table_id" {
 output "private_rt_id"{
   value = module.igotocloud_infra.private_rt_id
 }
+
+output "eip_id"{
+  value = module.igotocloud_infra.eip_id
+}
+
+output "nat_gateway_id" {
+  value = module.igotocloud_infra.nat_gateway_id
+}
+
+output "nat_gatway_address"{
+  value = module.igotocloud_infra.nat_gateway_address
+}

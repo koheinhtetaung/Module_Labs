@@ -74,3 +74,15 @@ variable "private_subnet_tags" {
 #   description = "A list of VGWs the public route table should propagate."
 #   default     = ["aws_internet_gateway"]
 # }
+
+variable "three_nat_gateway" {
+  description = "should be true if you want to provision NAT Gateways for each of your private networks"
+  # default     = true
+  type = bool
+}
+
+variable "single_nat_gateway" {
+  description = "should be true if you want to provision a single shared NAT Gateway across all of your private networks"
+  # default     = false
+  type = bool
+}
