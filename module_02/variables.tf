@@ -86,3 +86,20 @@ variable "single_nat_gateway" {
   # default     = false
   type = bool
 }
+
+variable "key_name" {
+  type = string
+  default = ""
+}
+
+variable "sg_pub_id" {
+  type = any
+}
+
+variable "sg_priv_id" {
+  type = any
+}
+
+variable "vpc" {
+  type = any
+}
