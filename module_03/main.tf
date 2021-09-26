@@ -1,6 +1,6 @@
-provider "aws"{
-  region = var.region  
-}
+# provider "aws"{
+#   region = var.region  
+# }
 
 resource "aws_vpc" "mastervpc" {
   count = var.create_vpc ? 1 : 0
