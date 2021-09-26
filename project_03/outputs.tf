@@ -13,3 +13,7 @@ output "private_subnets_id" {
 output "igw_id" {
   value = module.network.igw_id
 }
+
+output "public_RT_id" {
+  value = module.network.public_RT_id
+}
