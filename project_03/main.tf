@@ -8,7 +8,7 @@ module "network" {
   enable_dns_support = true
   tags = {"Project" = "project_03", "Enviroment" = "Testing"}
   public_subnets = ["10.10.1.0/24", "10.10.2.0/24"]
-  private_subnets = ["10.10.10.0/24", "10.10.20.0/24"]
+  # private_subnets = ["10.10.10.0/24", "10.10.20.0/24"]
   azs = ["ap-southeast-1b", "ap-southeast-1c"]
   create_igw = true
   providers = {
