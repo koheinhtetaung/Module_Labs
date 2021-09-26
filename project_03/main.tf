@@ -12,6 +12,6 @@ module "network" {
   azs = ["ap-southeast-1b", "ap-southeast-1c"]
   create_igw = true
   providers = {
-    aws = aws.igotocloud-master
+    aws = aws.igotocloud-dev
    }
 }
