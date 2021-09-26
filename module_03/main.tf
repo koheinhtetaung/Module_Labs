@@ -76,3 +76,16 @@ resource "aws_subnet" "private" {
     var.tags,
   )
 }
+
+resource "aws_route_table" "public" {
+  count = var.create_vpc && length(var.public_subnets) > 0 ? 1 : 0
+
+  vpc_id = aws_vpc.mastervpc[0].id
+
+  tags = merge(
+    {
+      "Name" = format("%s-${var.public_subnet_suffix}-routeTB", var.name)
+    },
+    var.tags,
+  )
+}
