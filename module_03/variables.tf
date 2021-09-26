@@ -1,8 +1,8 @@
-variable "region" {
-  type = string
-  default = ""
-  description = "User must input which region want to lunch your resources"
-}
+# variable "region" {
+#   type = string
+#   default = ""
+#   description = "User must input which region want to lunch your resources"
+# }
 
 variable "create_vpc" {
   type = bool
@@ -33,7 +33,7 @@ variable "enable_dns_support" {
 
 variable "name" {
   type = string
-  default = "project_03"
+  default = ""
   description = "will apply all resources"
 }
 
@@ -64,4 +64,14 @@ variable "public_subnet_suffix" {
 variable "map_public_ip_on_launch" {
   type = bool
   default = true
+}
+
+variable "private_subnets" {
+  description = "A list of private subnets inside the VPC."
+  default     = []
+}
+
+variable "private_subnet_suffix" {
+  type = string
+  default = "private"
 }

@@ -9,10 +9,10 @@ module "igotocloud_infra"{
   azs = ["ap-southeast-1a", "ap-southeast-1b", "ap-southeast-1c"]
   three_nat_gateway = true
   single_nat_gateway = false
-  key_name = "SGkey"
-  sg_pub_id = module.igotocloud_infra.sg_pub_id
-  sg_priv_id = module.igotocloud_infra.sg_priv_id
-  vpc = module.igotocloud_infra.vpc_id
+  # key_name = "SGkey"
+  # sg_pub_id = module.igotocloud_infra.sg_pub_id
+  # sg_priv_id = module.igotocloud_infra.sg_priv_id
+  # vpc = module.igotocloud_infra.vpc_id
   tags = {
     "Envrioment" = "Staging"
     "Project" = "VPC_Prj02"  

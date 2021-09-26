@@ -30,22 +30,22 @@ output "nat_gateway_id" {
   value = aws_nat_gateway.natgw.*.id
 }
 
-output "nat_gateway_address" {
-  value = aws_nat_gateway.natgw.*.subnet_id
-}
+# output "nat_gateway_address" {
+#   value = aws_nat_gateway.natgw.*.subnet_id
+# }
 
-output "sg_pub_id" {
-  value = aws_security_group.allow_ssh_pub.id
-}
+# output "sg_pub_id" {
+#   value = aws_security_group.allow_ssh_pub.id
+# }
 
-output "sg_priv_id" {
-  value = aws_security_group.allow_ssh_priv.id
-}
+# output "sg_priv_id" {
+#   value = aws_security_group.allow_ssh_priv.id
+# }
 
-output "public_ip" {
-  value = aws_instance.ec2_public.public_ip
-}
+# output "public_ip" {
+#   value = aws_instance.ec2_public.public_ip
+# }
 
-output "private_ip" {
-  value = aws_instance.ec2_private.private_ip
-}
+# output "private_ip" {
+#   value = aws_instance.ec2_private.private_ip
+# }

@@ -87,19 +87,19 @@ variable "single_nat_gateway" {
   type = bool
 }
 
-variable "key_name" {
-  type = string
-  default = ""
-}
+# variable "key_name" {
+#   type = string
+#   default = ""
+# }
 
-variable "sg_pub_id" {
-  type = any
-}
+# variable "sg_pub_id" {
+#   type = any
+# }
 
-variable "sg_priv_id" {
-  type = any
-}
+# variable "sg_priv_id" {
+#   type = any
+# }
 
-variable "vpc" {
-  type = any
-}
+# variable "vpc" {
+#   type = any
+# }
